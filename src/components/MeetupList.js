@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         flex: 1,
         flexDirection: 'row',
-        justify: 'space-between',
+        justifyContent: 'space-between',
         height: 100
     },
     image: {
