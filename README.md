@@ -24,5 +24,8 @@ npm install -g react-native-cli
 - Open the Xcode project created inside the folder `ios`
 - With Xcode run your project, this could take some minutes
 
+#### Demo for iOS Device
+
+![alt text](media/demo.gif)
 
 ### Android Version
