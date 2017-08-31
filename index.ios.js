@@ -32,11 +32,7 @@ export default class Meetups extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        {
-          this.state.user
-          ? <AppNavigation user={this.state.user} />
-          : <Auth />
-        }
+        <MeetupList />
       </View>
     );
   }
