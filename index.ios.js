@@ -5,30 +5,18 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry, View } from 'react-native';
+
+import MeetupList from './src/components/MeetupList';
 
 export default class Meetups extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        
+      <View style={{ flex: 1 }}>
+        <MeetupList />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FAFAFA',
-  }
-});
 
 AppRegistry.registerComponent('Meetups', () => Meetups);
