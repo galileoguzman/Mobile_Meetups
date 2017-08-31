@@ -29,3 +29,14 @@ npm install -g react-native-cli
 ![alt text](media/demo.gif)
 
 ### Android Version
+
+
+#### Errors
+
+````
+
+- watchman watch-del-all
+- rm -rf node_modules && npm install
+- rm -fr $TMPDIR/react-*
+
+````
