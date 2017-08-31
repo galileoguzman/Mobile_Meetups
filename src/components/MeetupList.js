@@ -20,7 +20,17 @@ export default class MeetupList extends React.Component {
     render(){
         return(
             <ScrollView>
-                <Text>Hola mundo</Text>
+                {this.state.events.map((event, i) => (
+                    <TouchableWithoutFeedback>
+                        <View>
+                            <Image />
+                            <View>
+                                <Text>{event.title}</Text>
+                                <Text>{event.groupName}</Text>
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
+                ))}
             </ScrollView>
         )
     }
