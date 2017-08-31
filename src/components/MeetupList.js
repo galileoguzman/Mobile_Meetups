@@ -26,9 +26,9 @@ export default class MeetupList extends React.Component {
         title: 'Meetups',
         headerStyle: {
             backgroundColor: 'red',
-            paddingTop: 25,
+            paddingTop: 15,
             paddingHorizontal: 10,
-            height: 80
+            height: 55
         },
         headerTitleStyle: {
             color: 'white'
