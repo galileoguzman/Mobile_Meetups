@@ -20,6 +20,19 @@ export default class MeetupList extends React.Component {
         }
     }
 
+    componentWillMount() {
+        this.setState({
+            events: [
+                {title: 'Bitcoin OX', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                {title: 'Management', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                {title: 'React native', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                {title: 'Mobile development', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                {title: 'JS for living', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                {title: 'iOS Dev', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'}
+            ]
+        })
+    }
+
     render(){
         return(
             <ScrollView style={styles.container}>
