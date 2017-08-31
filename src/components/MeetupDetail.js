@@ -41,14 +41,14 @@ export default class MeetupDetail extends React.Component{
                 <Text style={styles.title}>Titulo del evento</Text>
                 <View style={styles.info}>
                     <Icon style={styles.infoIcon} name="calendar-o" size={20} color="grey"/>
-                    <View>
+                    <View style={styles.infoTextContainer}>
                         <Text style={styles.infoText}>Una fecha</Text>
                         <Text style={styles.infoSubText}>Una segunda fecha</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
                     <Icon style={styles.infoIcon} name="map-marker" size={20} color="grey"/>
-                    <View>
+                    <View style={styles.infoTextContainer}>
                         <Text style={styles.infoText}>Ubicacion</Text>
                         <Text style={styles.infoSubText}>Direccion</Text>
                     </View>
@@ -79,6 +79,7 @@ const styles = ({
         height: 240
     },
     title: {
+        color: '#4b5f83',
         fontSize: 24,
         fontWeight: 'bold',
         marginHorizontal: 20,
@@ -89,11 +90,19 @@ const styles = ({
         marginHorizontal: 40
     },
     infoIcon: {
-        margin: 10
+        margin: 10,
+        marginRight: 22,
+        textAlign: 'right'
     },
     infoText: {
-        color: 'grey',
+        color: '#d8d8d8',
         fontSize: 17
+    },
+    infoSubText:{
+        color: '#4b5f83',
+    },
+    infoTextContainer:{
+        marginLeft: 20
     },
     registerButton: {
         flex: 1,
