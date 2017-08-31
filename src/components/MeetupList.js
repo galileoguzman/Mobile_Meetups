@@ -7,7 +7,8 @@ import {
     Image,
     TouchableWithoutFeedback,
     StyleSheet,
-    Dimensions
+    Dimensions,
+    ActivityIndicator
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -16,7 +17,8 @@ export default class MeetupList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            events : []
+            events : [],
+            isLoading : true
         }
     }
 
@@ -30,14 +32,16 @@ export default class MeetupList extends React.Component {
                     {title: 'Mobile development', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
                     {title: 'JS for living', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
                     {title: 'iOS Dev', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'}
-                ]
+                ],
+                isLoading: false
             });
         }, 4000);
     }
 
     render(){
-        return(
-            <ScrollView style={styles.container}>
+        return this.state.isLoading
+        ? (<ActivityIndicator style={styles.loader} size={100} color="red"/>)
+        : (<ScrollView style={styles.container}>
                 {this.state.events.map((event, i) => (
                     <TouchableWithoutFeedback
                         key={ i }
@@ -52,12 +56,14 @@ export default class MeetupList extends React.Component {
                         </View>
                     </TouchableWithoutFeedback>
                 ))}
-            </ScrollView>
-        )
+            </ScrollView>)
     }
 }
 
 const styles = StyleSheet.create({
+    loader: {
+        marginTop: 200
+    },
     container:{
         flex: 1,
         margin: 10,
