@@ -25,7 +25,7 @@ export default class MeetupList extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'Meetups',
         headerStyle: {
-            backgroundColor: 'red',
+            backgroundColor: '#4b5f83',
             paddingTop: 15,
             paddingHorizontal: 10,
             height: 55
@@ -54,7 +54,7 @@ export default class MeetupList extends React.Component {
 
     render(){
         return this.state.isLoading
-        ? (<ActivityIndicator style={styles.loader} color="red"/>)
+        ? (<ActivityIndicator style={styles.loader} color="#4b5f83"/>)
         : (<ScrollView style={styles.container}>
                 {this.state.events.map((event, i) => (
                     <TouchableWithoutFeedback
