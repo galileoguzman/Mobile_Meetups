@@ -2,7 +2,7 @@
 
 This is a sample app created with the `react-native-cli` to compile application you have to do the next steps:
 
-#### iOS Version
+### iOS Version
 
 To run iOS you have to have installed on your host computer:
 
@@ -25,4 +25,4 @@ npm install -g react-native-cli
 - With Xcode run your project, this could take some minutes
 
 
-#### iOS Version
+### Android Version
