@@ -38,6 +38,7 @@ export default class MeetupList extends React.Component {
             <ScrollView style={styles.container}>
                 {this.state.events.map((event, i) => (
                     <TouchableWithoutFeedback
+                        key={ i }
                         onPress={() => null}
                     >
                         <View style={styles.card}>
@@ -68,7 +69,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: 100
+        height: 100,
+        marginVertical: 4
     },
     image: {
         height: 100,
