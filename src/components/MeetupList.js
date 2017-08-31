@@ -42,7 +42,7 @@ export default class MeetupList extends React.Component {
                 ],
                 isLoading: false
             });
-        }, 4000);
+        }, 1000);
     }
 
     render(){
