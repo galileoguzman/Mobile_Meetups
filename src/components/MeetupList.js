@@ -40,7 +40,7 @@ export default class MeetupList extends React.Component {
 
     render(){
         return this.state.isLoading
-        ? (<ActivityIndicator style={styles.loader} size={100} color="red"/>)
+        ? (<ActivityIndicator style={styles.loader} color="red"/>)
         : (<ScrollView style={styles.container}>
                 {this.state.events.map((event, i) => (
                     <TouchableWithoutFeedback
