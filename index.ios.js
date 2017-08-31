@@ -9,11 +9,34 @@ import { AppRegistry, View } from 'react-native';
 
 import MeetupList from './src/components/MeetupList';
 
+import AppNavigation from './AppNavigation';
+import Auth from './src/components/Auth';
+
 export default class Meetups extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      user: {}
+    }
+  }
+
+  componentWillMount(){
+    setTimeout(() =>{
+      this.setState({
+        user : {email: 'yo@email.io'}
+      });
+    }, 2000);
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <MeetupList />
+        {
+          this.state.user
+          ? <AppNavigation user={this.state.user} />
+          : <Auth />
+        }
       </View>
     );
   }
