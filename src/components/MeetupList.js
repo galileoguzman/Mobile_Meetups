@@ -11,6 +11,8 @@ import {
     ActivityIndicator
 } from 'react-native';
 
+import { navigationOptions } from '../config/navOptions';
+
 const {width, height} = Dimensions.get('window');
 
 export default class MeetupList extends React.Component {
@@ -24,16 +26,7 @@ export default class MeetupList extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
         title: 'Meetups',
-        headerStyle: {
-            backgroundColor: '#4b5f83',
-            paddingTop: 15,
-            paddingHorizontal: 10,
-            height: 55
-        },
-        headerTitleStyle: {
-            color: 'white'
-        },
-        headerTintColor: 'white'
+        ...navigationOptions
     });
 
     componentWillMount() {
