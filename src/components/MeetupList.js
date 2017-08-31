@@ -40,12 +40,12 @@ export default class MeetupList extends React.Component {
         setTimeout(() => {
             this.setState({
                 events: [
-                    {title: 'Bitcoin OX', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
-                    {title: 'Management', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
-                    {title: 'React native', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
-                    {title: 'Mobile development', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
-                    {title: 'JS for living', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
-                    {title: 'iOS Dev', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'}
+                    {id: 1, title: 'Bitcoin OX', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                    {id: 2, title: 'Management', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                    {id: 3, title: 'React native', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                    {id: 4, title: 'Mobile development', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                    {id: 5, title: 'JS for living', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'},
+                    {id: 6, title: 'iOS Dev', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg'}
                 ],
                 isLoading: false
             });
@@ -53,13 +53,19 @@ export default class MeetupList extends React.Component {
     }
 
     render(){
+
+        const { navigation } = this.props;
+
         return this.state.isLoading
         ? (<ActivityIndicator style={styles.loader} color="#4b5f83"/>)
         : (<ScrollView style={styles.container}>
                 {this.state.events.map((event, i) => (
                     <TouchableWithoutFeedback
                         key={ i }
-                        onPress={() => null}
+                        onPress={() => navigation.navigate('Detail', {
+                            group: event.groupName,
+                            id: event.id    
+                        })}
                     >
                         <View style={styles.card}>
                             <Image style={styles.image} source={{uri : event.groupImage}}/>
