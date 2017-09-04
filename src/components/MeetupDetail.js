@@ -12,6 +12,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { navigationOptions } from '../config/navOptions';
 
+import { db } from '../config/firebase';
+
 export default class MeetupDetail extends React.Component{
 
     constructor(props){
@@ -29,28 +31,32 @@ export default class MeetupDetail extends React.Component{
     });
 
     componentWillMount(){
-        this.setState({
-            event: { id: 3, title: 'React native', groupName: 'LoopTalks', groupImage: 'https://dl.dropboxusercontent.com/u/12654912/elpunto/expresso-motivation.jpg' }
-        });
+        const { navigation } = this.props;
+        db.ref(`/events/${navigation.state.params.id}`)
+            .once('value', snapshot => {
+                this.setState({
+                    event: snapshot.val()
+                })
+            });
     }
 
     render(){
         return (
             <ScrollView style={styles.container}>
-                <Image style={styles.coverImage} source={require('../assets/networking-event.jpg')} />
-                <Text style={styles.title}>Titulo del evento</Text>
+                <Image style={styles.coverImage} source={this.state.event.groupImage} />
+                <Text style={styles.title}>{this.state.event.title}</Text>
                 <View style={styles.info}>
                     <Icon style={styles.infoIcon} name="calendar-o" size={20} color="grey"/>
                     <View style={styles.infoTextContainer}>
-                        <Text style={styles.infoText}>Una fecha</Text>
-                        <Text style={styles.infoSubText}>Una segunda fecha</Text>
+                        <Text style={styles.infoText}>Fecha</Text>
+                        <Text style={styles.infoSubText}>{this.state.event.date}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
                     <Icon style={styles.infoIcon} name="map-marker" size={20} color="grey"/>
                     <View style={styles.infoTextContainer}>
                         <Text style={styles.infoText}>Ubicacion</Text>
-                        <Text style={styles.infoSubText}>Direccion</Text>
+                        <Text style={styles.infoSubText}>{this.state.event.locationAddress}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
@@ -61,7 +67,7 @@ export default class MeetupDetail extends React.Component{
                     </TouchableHighlight>
                 </View>
                 <View style={styles.description}>
-                    <Text style={styles.descriptionText}>Una bonita descripción</Text>
+                    <Text style={styles.descriptionText}>{this.state.event.description}</Text>
                 </View>
 
             </ScrollView>
