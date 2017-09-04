@@ -13,6 +13,8 @@ import {
 
 import { navigationOptions } from '../config/navOptions';
 
+import { db } from '../config/firebase';
+
 const {width, height} = Dimensions.get('window');
 
 export default class MeetupList extends React.Component {
@@ -30,19 +32,13 @@ export default class MeetupList extends React.Component {
     });
 
     componentWillMount() {
-        setTimeout(() => {
-            this.setState({
-                events: [
-                    {id: 1, title: 'Bitcoin OX', groupName: 'LoopTalks', groupImage: 'https://s3-us-west-2.amazonaws.com/android-workshop/media/movies/movie/14ed121a-58cf-4bff-91c0-aeedbc137f6f.jpeg'},
-                    {id: 2, title: 'Management', groupName: 'LoopTalks', groupImage: 'https://s3-us-west-2.amazonaws.com/android-workshop/media/movies/movie/14ed121a-58cf-4bff-91c0-aeedbc137f6f.jpeg'},
-                    {id: 3, title: 'React native', groupName: 'LoopTalks', groupImage: 'https://s3-us-west-2.amazonaws.com/android-workshop/media/movies/movie/14ed121a-58cf-4bff-91c0-aeedbc137f6f.jpeg'},
-                    {id: 4, title: 'Mobile development', groupName: 'LoopTalks', groupImage: 'https://s3-us-west-2.amazonaws.com/android-workshop/media/movies/movie/14ed121a-58cf-4bff-91c0-aeedbc137f6f.jpeg'},
-                    {id: 5, title: 'JS for living', groupName: 'LoopTalks', groupImage: 'https://s3-us-west-2.amazonaws.com/android-workshop/media/movies/movie/14ed121a-58cf-4bff-91c0-aeedbc137f6f.jpeg'},
-                    {id: 6, title: 'iOS Dev', groupName: 'LoopTalks', groupImage: 'https://s3-us-west-2.amazonaws.com/android-workshop/media/movies/movie/14ed121a-58cf-4bff-91c0-aeedbc137f6f.jpeg'}
-                ],
-                isLoading: false
+        db.ref('/events')
+            .once('value', snapshot => {
+                this.setState({
+                    events: this.state.events.concat(snapshot.val()),
+                    isLoading: false
+                });
             });
-        }, 1000);
     }
 
     render(){
