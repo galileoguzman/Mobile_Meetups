@@ -35,6 +35,9 @@ export default class MeetupDetail extends React.Component{
 
     componentWillMount(){
         const { navigation } = this.props;
+
+        moment().locale('es');
+
         db.ref(`/events/${navigation.state.params.id}`)
             .once('value', snapshot => {
                 this.setState({
@@ -46,13 +49,13 @@ export default class MeetupDetail extends React.Component{
     render(){
         return (
             <ScrollView style={styles.container}>
-                <Image style={styles.coverImage} source={this.state.event.groupImage} />
+                <Image style={styles.coverImage} source={{uri : this.state.event.groupImage}} />
                 <Text style={styles.title}>{this.state.event.title}</Text>
                 <View style={styles.info}>
                     <Icon style={styles.infoIcon} name="calendar-o" size={20} color="grey"/>
                     <View style={styles.infoTextContainer}>
-                        <Text style={styles.infoText}>Fecha</Text>
-                        <Text style={styles.infoSubText}>{this.state.event.date}</Text>
+                        <Text style={styles.infoText}>Cuando</Text>
+                        <Text style={styles.infoSubText}>{moment(this.state.event.date).format('dddd DD MMMM')}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
