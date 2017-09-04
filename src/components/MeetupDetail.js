@@ -10,6 +10,9 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import moment from 'moment';
+import 'moment/locale/es';
+
 import { navigationOptions } from '../config/navOptions';
 
 import { db } from '../config/firebase';
